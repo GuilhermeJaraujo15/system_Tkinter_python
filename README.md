@@ -29,7 +29,7 @@ A Portuguese-language desktop manager for tasks and appointments, built with **P
 
 ## Data Persistence
 
-The executable is fully **portable**: user name, tasks, and appointments are stored in a `dados.json` file located right next to the `.exe`, regardless of your terminal's working directory. 
+The executable is fully **portable**: user name, tasks, and appointments are stored in a `dados.json` file located right next to the `.exe`, regardless of your terminal's working directory. You can download the file from this link (https://drive.google.com/file/d/1PWQvGuViJlukfquSMzegTQKDFSsetV93/view)
 
 **Important:** Extract the entire ZIP file into a folder with write permissions (such as *Documents*) before running the program. To move your data, close the application and copy the entire folder.
 
@@ -89,7 +89,7 @@ Nos formulários, `Ctrl+Enter` salva e `Esc` cancela, confirmando o descarte qua
 O executável é portátil: nome, tarefas e compromissos ficam em `dados.json` ao lado
 do `.exe`, independentemente do diretório do terminal. Extraia todo o ZIP para uma
 pasta com permissão de gravação (por exemplo, Documentos) antes de abrir o programa.
-Para transportar seus dados, feche o aplicativo e leve a pasta inteira.
+Para transportar seus dados, feche o aplicativo e leve a pasta inteira. Você pode fazer o download do arquivo neste link (https://drive.google.com/file/d/1PWQvGuViJlukfquSMzegTQKDFSsetV93/view)
 
 ## Estrutura
 
