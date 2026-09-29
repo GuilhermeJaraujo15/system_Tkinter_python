@@ -13,19 +13,6 @@ Tkinter e ttk. Funciona localmente, sem servidor, banco de dados ou conexão com
 - Salvamento automático em JSON UTF-8 e recuperação de arquivos inválidos com cópia preservada.
 - Interface redimensionável, tabelas com rolagem e configuração com caminho dos dados.
 
-## Executar em desenvolvimento
-
-Use Python 3.11 ou superior com Tcl/Tk (incluído na instalação oficial para Windows).
-Na pasta do projeto:
-
-```console
-python main.py
-```
-
-A aplicação não precisa instalar dependências externas. A implementação foi testada
-com Python 3.14 no Windows. Resolução recomendada: 1100 × 700 ou maior;
-a janela permite redução até 850 × 580.
-
 ## Como utilizar
 
 Na primeira abertura, informe seu nome e clique em **Começar**. O nome aparece no
@@ -52,60 +39,6 @@ do `.exe`, independentemente do diretório do terminal. Extraia todo o ZIP para 
 pasta com permissão de gravação (por exemplo, Documentos) antes de abrir o programa.
 Para transportar seus dados, feche o aplicativo e leve a pasta inteira.
 
-Em desenvolvimento (`python main.py`), o local permanece
-`%APPDATA%\TaskManager\dados.json`; fora do Windows, o fallback é `~/.config/TaskManager`.
-O caminho efetivamente usado aparece em **Configurações**.
-Para migrar da versão anterior, copie o JSON do AppData para a pasta do executável,
-com o programa fechado e uma cópia de segurança guardada. Nenhum dado é migrado
-automaticamente. Ao atualizar, substitua somente o executável, preservando seu JSON.
-
-A primeira execução cria listas vazias. Cada alteração é gravada primeiro em um
-arquivo temporário na mesma pasta e depois substitui o JSON. Uma falha de gravação
-não aplica a alteração em memória. IDs incrementais são preservados após exclusões.
-JSON inválido é copiado para `dados.corrompidos-<data-hora>.json` antes de reiniciar
-as listas; o programa avisa onde a cópia foi salva. Não há recuperação automática
-dos registros dessa cópia. Se o backup falhar, a inicialização é interrompida.
-
-Para backup/restauração, feche a aplicação e copie/substitua `dados.json`.
-Use uma instância por vez; alterações externas detectadas bloqueiam o salvamento
-até reabrir o programa. Não há sincronização simultânea entre instâncias.
-
-## Testes
-
-```console
-python -m unittest discover -s tests -v
-```
-
-Os testes usam pastas temporárias, sem dados fictícios na pasta do usuário.
-Incluem CRUD, IDs, contadores, filtros, validação, agenda, reabertura,
-JSON inválido, falha de escrita e operações reais dos widgets Tkinter.
-O teste de interface requer uma sessão gráfica e abre janelas brevemente.
-
-## Gerar o executável Windows
-
-```console
-build.bat
-```
-
-O script cria `.venv`, instala o PyInstaller, executa os testes e gera
-**`dist\portatil\TaskManager.exe`**, em arquivo único e sem console, e o pacote
-**`dist\TaskManager-portatil.zip`** com executável, JSON vazio e instruções. A primeira instalação
-das ferramentas de build requer internet. O executável resultante não requer Python
-instalado nem internet. O arquivo `.spec` inclui automaticamente Tcl/Tk pelo hook
-do PyInstaller; `build_support.py` complementa a coleta de bibliotecas embutidas
-via zipfs nas distribuições com Tcl/Tk 9. O pacote não embute dados pessoais.
-
-Para compilar diretamente após instalar `requirements.txt`:
-
-```console
-.venv\Scripts\python.exe -m PyInstaller --noconfirm --workpath build\portatil --distpath dist\portatil TaskManager.spec
-python package_release.py
-```
-
-Gere o executável no Windows para a arquitetura de destino. O binário desta entrega
-é Windows x64. Windows 10/11 são os alvos; a validação local não substitui um teste
-em uma máquina limpa de cada versão do Windows.
-
 ## Estrutura
 
 | Arquivo | Responsabilidade |
@@ -119,9 +52,3 @@ em uma máquina limpa de cada versão do Windows.
 | `TaskManager.spec`, `build.bat`, `requirements.txt` | Build Windows |
 | `package_release.py` | ZIP de distribuição com JSON vazio |
 
-## Publicação
-
-Publique no GitHub o código, os testes e a documentação. O `.gitignore` exclui
-ambiente virtual, arquivos de build, distribuição e dados pessoais. Distribua
-`dist/TaskManager-portatil.zip` pelo link de download escolhido. O pacote é criado
-com dados vazios, sem copiar o nome ou os registros do desenvolvedor.
