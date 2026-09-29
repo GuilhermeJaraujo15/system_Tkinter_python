@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+build/
+dist/
+
+# Dados pessoais e cópias de recuperação
+dados.json
+dados.corrompidos-*.json

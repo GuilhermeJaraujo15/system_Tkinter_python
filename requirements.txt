@@ -1,0 +1,2 @@
+# Apenas para gerar o executável; a aplicação usa a biblioteca padrão.
+pyinstaller>=6.16,<7
