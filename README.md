@@ -47,6 +47,7 @@ The executable is fully **portable**: user name, tasks, and appointments are sto
 | `package_release.py` | Script to generate the distribution ZIP with an empty JSON |
 
 
+
 (PT)
 
 # TaskManager
